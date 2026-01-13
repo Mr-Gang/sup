@@ -159,7 +159,7 @@ spec:
     # Database Initialization (runs before services start)
     - name: db-init
       git:
-        repo_clone_url: https://github.com/AppPlatform-Templates/supabase-appplatform.git
+        repo_clone_url: https://github.com/Mr-Gang/sup.git
         branch: main
       kind: PRE_DEPLOY
       dockerfile_path: db-init/Dockerfile.dbinit
