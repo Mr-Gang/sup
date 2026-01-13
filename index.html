@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate.io - Buy Bitcoin & Cryptocurrency Exchange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #12172e;
+            border-bottom: 1px solid #1e2744;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2ebd85;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #2ebd85 0%, #1ea567 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #9ca3bf;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2ebd85;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #2ebd85;
+            color: #2ebd85;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(46, 189, 133, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2ebd85 0%, #1ea567 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 189, 133, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #2ebd85 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #9ca3bf;
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-actions .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+        }
+
+        /* Trading Card */
+        .trading-card {
+            background: #12172e;
+            border: 1px solid #1e2744;
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .trading-card h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .trading-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #1e2744;
+        }
+
+        .tab {
+            padding: 12px 0;
+            color: #9ca3bf;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #2ebd85;
+            border-bottom-color: #2ebd85;
+        }
+
+        .crypto-select {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #0a0e27;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            cursor: pointer;
+        }
+
+        .crypto-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f7931a 0%, #ffa726 100%);
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #9ca3bf;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0a0e27;
+            border: 1px solid #1e2744;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        /* Market Section */
+        .market-section {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+        }
+
+        .market-tabs {
+            display: flex;
+            gap: 24px;
+        }
+
+        .market-tab {
+            color: #9ca3bf;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .market-tab.active {
+            background: rgba(46, 189, 133, 0.1);
+            color: #2ebd85;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .market-card {
+            background: #12172e;
+            border: 1px solid #1e2744;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .market-card:hover {
+            border-color: #2ebd85;
+            transform: translateY(-4px);
+        }
+
+        .market-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .crypto-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .market-card .crypto-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .crypto-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .crypto-symbol {
+            font-size: 12px;
+            color: #9ca3bf;
+        }
+
+        .change-badge {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .change-positive {
+            background: rgba(46, 189, 133, 0.1);
+            color: #2ebd85;
+        }
+
+        .change-negative {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .market-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #9ca3bf;
+            font-size: 12px;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: #12172e;
+            padding: 80px 24px;
+        }
+
+        .features-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background: #0a0e27;
+            border: 1px solid #1e2744;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #2ebd85;
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #2ebd85 0%, #1ea567 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #9ca3bf;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #12172e;
+            border-top: 1px solid #1e2744;
+            padding: 60px 24px 24px;
+        }
+
+        .footer-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #2ebd85;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #9ca3bf;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #2ebd85;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid #1e2744;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9ca3bf;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: #9ca3bf;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #2ebd85;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 24px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">G</div>
+                Gate.io
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#spot">Spot</a></li>
+                    <li><a href="#derivatives">Derivatives</a></li>
+                    <li><a href="#web3">Web3</a></li>
+                    <li><a href="#copy-trading">Copy Trading</a></li>
+                    <li><a href="#nft">NFT</a></li>
+                    <li><a href="#earn">Earn</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-secondary">Log In</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Buy Bitcoin & Cryptocurrency</h1>
+            <p>Trade over 4,300+ cryptocurrencies with low fees, high liquidity, and industry-leading security. Join millions of users worldwide.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="trading-card">
+            <h3>Quick Trade</h3>
+            <div class="trading-tabs">
+                <div class="tab active">Buy</div>
+                <div class="tab">Sell</div>
+                <div class="tab">Convert</div>
+            </div>
+            <div class="crypto-select">
+                <div class="crypto-icon"></div>
+                <div>
+                    <div class="crypto-name">Bitcoin</div>
+                    <div class="crypto-symbol">BTC</div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Amount</label>
+                <input type="text" placeholder="0.00" value="1.00">
+            </div>
+            <div class="input-group">
+                <label>You will receive</label>
+                <input type="text" placeholder="0.00" value="94,582.50" readonly>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; padding: 14px;">Buy BTC</button>
+        </div>
+    </section>
+
+    <!-- Market Section -->
+    <section class="market-section">
+        <div class="section-header">
+            <h2>Market Overview</h2>
+            <div class="market-tabs">
+                <div class="market-tab active">Top Gainers</div>
+                <div class="market-tab">Trending</div>
+                <div class="market-tab">New Listings</div>
+            </div>
+        </div>
+        <div class="market-grid">
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #f7931a 0%, #ffa726 100%);"></div>
+                        <div>
+                            <div class="crypto-name">Bitcoin</div>
+                            <div class="crypto-symbol">BTC/USDT</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-positive">+5.23%</div>
+                </div>
+                <div class="price">$94,582.50</div>
+                <div class="market-stats">
+                    <div>24h Vol: $32.5B</div>
+                    <div>24h High: $95,120</div>
+                </div>
+            </div>
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #627eea 0%, #4863d5 100%);"></div>
+                        <div>
+                            <div class="crypto-name">Ethereum</div>
+                            <div class="crypto-symbol">ETH/USDT</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-positive">+3.87%</div>
+                </div>
+                <div class="price">$3,542.18</div>
+                <div class="market-stats">
+                    <div>24h Vol: $18.2B</div>
+                    <div>24h High: $3,589</div>
+                </div>
+            </div>
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #26a17b 0%, #1e8b6a 100%);"></div>
+                        <div>
+                            <div class="crypto-name">Tether</div>
+                            <div class="crypto-symbol">USDT/USD</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-positive">+0.02%</div>
+                </div>
+                <div class="price">$1.00</div>
+                <div class="market-stats">
+                    <div>24h Vol: $82.1B</div>
+                    <div>24h High: $1.001</div>
+                </div>
+            </div>
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #f3ba2f 0%, #e6a617 100%);"></div>
+                        <div>
+                            <div class="crypto-name">BNB</div>
+                            <div class="crypto-symbol">BNB/USDT</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-negative">-1.45%</div>
+                </div>
+                <div class="price">$612.34</div>
+                <div class="market-stats">
+                    <div>24h Vol: $2.8B</div>
+                    <div>24h High: $625</div>
+                </div>
+            </div>
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #14b8a6 0%, #0f9488 100%);"></div>
+                        <div>
+                            <div class="crypto-name">Solana</div>
+                            <div class="crypto-symbol">SOL/USDT</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-positive">+8.52%</div>
+                </div>
+                <div class="price">$183.72</div>
+                <div class="market-stats">
+                    <div>24h Vol: $5.2B</div>
+                    <div>24h High: $189</div>
+                </div>
+            </div>
+            <div class="market-card">
+                <div class="market-card-header">
+                    <div class="crypto-info">
+                        <div class="crypto-icon" style="background: linear-gradient(135deg, #0052ff 0%, #0041cc 100%);"></div>
+                        <div>
+                            <div class="crypto-name">Cardano</div>
+                            <div class="crypto-symbol">ADA/USDT</div>
+                        </div>
+                    </div>
+                    <div class="change-badge change-positive">+4.21%</div>
+                </div>
+                <div class="price">$1.08</div>
+                <div class="market-stats">
+                    <div>24h Vol: $1.5B</div>
+                    <div>24h High: $1.12</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why Choose Gate.io?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Industry-leading security with cold storage, 2FA, and proof of reserves ensuring your assets are always protected.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Low Trading Fees</h3>
+                    <p>Competitive fees starting from 0.1% with additional discounts for high-volume traders and GT token holders.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>4,300+ Cryptocurrencies</h3>
+                    <p>Trade a vast selection of digital assets including Bitcoin, Ethereum, altcoins, and the latest DeFi tokens.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Trading Tools</h3>
+                    <p>Professional charting, multiple order types, margin trading, and copy trading for all experience levels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Web3 Ecosystem</h3>
+                    <p>Access DeFi, NFTs, staking, and Web3 wallet integration all in one comprehensive platform.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Earn Rewards</h3>
+                    <p>Generate passive income through staking, lending, liquidity mining, and exclusive promotions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Spot Trading</a></li>
+                        <li><a href="#">Margin Trading</a></li>
+                        <li><a href="#">Futures</a></li>
+                        <li><a href="#">Options</a></li>
+                        <li><a href="#">Copy Trading</a></li>
+                        <li><a href="#">ETF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Earn</a></li>
+                        <li><a href="#">Loan</a></li>
+                        <li><a href="#">Web3 Wallet</a></li>
+                        <li><a href="#">NFT</a></li>
+                        <li><a href="#">Startup</a></li>
+                        <li><a href="#">GT Token</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Trading Rules</a></li>
+                        <li><a href="#">Fee Schedule</a></li>
+                        <li><a href="#">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Proof of Reserves</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Reddit</a></li>
+                        <li><a href="#">Medium</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; <span id="current-year"></span> Gate.io Clone. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#">🐦</a>
+                    <a href="#">📱</a>
+                    <a href="#">💬</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
