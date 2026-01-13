@@ -5,7 +5,7 @@ A professional cryptocurrency exchange landing page clone inspired by Gate.io's 
 ## Features
 
 - **Modern, Responsive Design**: Clean UI with modular layout optimized for all devices
-- **Dark Theme**: Professional dark mode with green/blue accent colors
+- **Dark Theme**: Professional dark mode with green accent colors
 - **Navigation**: Complete header with trading categories (Spot, Derivatives, Web3, NFT, etc.)
 - **Hero Section**: Eye-catching landing area with quick trade card
 - **Market Overview**: Real-time style market cards showing top cryptocurrencies
